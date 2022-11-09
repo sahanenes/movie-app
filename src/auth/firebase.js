@@ -4,12 +4,17 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+  toastWarnNotify,
+} from "../helpers/ToastNotify";
 
 //* Your web app's Firebase configuration
 const firebaseConfig = {
@@ -81,5 +86,15 @@ export const signUpWithGoogle = (navigate) => {
     .catch((error) => {
       console.log(error);
       toastErrorNotify("Login is not successfull! ");
+    });
+};
+
+export const forgotPassword = (email) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      toastWarnNotify("Please check your mail box!");
+    })
+    .catch((err) => {
+      toastErrorNotify(err.message);
     });
 };

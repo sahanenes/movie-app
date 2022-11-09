@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleIcon from "../assets/icons/GoogleIcon";
-import { SignIn, signUpWithGoogle } from "../auth/firebase";
+import { forgotPassword, SignIn, signUpWithGoogle } from "../auth/firebase";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -66,6 +66,7 @@ const Login = () => {
               <span
                 role="button"
                 className="links-a font-[0.75em] cursor-pointer decoration-none text-[#8f8f8f]"
+                onClick={() => forgotPassword(email)}
               >
                 Forgot Password
               </span>
