@@ -23,9 +23,6 @@ const Register = () => {
     signUpWithGoogle(navigate);
   };
 
-  // const hadleChange = (e) =>
-  //   setInfo({ ...info, [e.target.id]: e.target.value });
-
   return (
     <div className="flex justify-center">
       <div className="form-image hidden md:block">
