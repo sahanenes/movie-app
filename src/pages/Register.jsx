@@ -25,7 +25,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="form-image hidden md:block">
+      <div className="form-image hidden xl:block">
         <img
           src="https://picsum.photos/800/800"
           alt="sample-movie"
