@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import { logOut } from "../auth/firebase";
 import { AuthContext } from "../context/AuthContextProvider";
+import Switch from "./Switch";
 
 const Navbar = () => {
   const { currentUser } = useContext(AuthContext);
@@ -20,6 +21,7 @@ const Navbar = () => {
             {currentUser && (
               <h5 className="mr-2 capitilize">{currentUser?.displayName}</h5>
             )}
+            <Switch />
             <div className="dropdown relative">
               <span
                 className="dropdown-toggle flex items-center hidden-arrow"
