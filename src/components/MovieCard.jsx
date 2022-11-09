@@ -7,6 +7,16 @@ const defaultImage =
 
 const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
   const { currentUser } = useContext(AuthContext);
+
+  const getVote = (vote) => {
+    if (vote >= 8) {
+      return "green";
+    } else if (vote >= 6) {
+      return "orange";
+    } else {
+      return "red";
+    }
+  };
   return (
     <div className="movie">
       <img
@@ -16,7 +26,11 @@ const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
       />
       <div className="flex align-baseline justify-between p-1 text-white">
         <h5>{title}</h5>
-        {currentUser && <span className="tag ">{vote_average}</span>}
+        {currentUser && (
+          <span className={`tag ${getVote(vote_average)} `}>
+            {vote_average.toFixed(1)}
+          </span>
+        )}
       </div>
       <div className="movie-over">
         <h2>Overview</h2>
