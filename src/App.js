@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
-    <div className="bg-grey-100  dark:bg-[#23242a]">
+    <div className="  dark:bg-[#23242a]">
       <AuthContextProvider>
         <AppRouter />
         <ToastContainer />
