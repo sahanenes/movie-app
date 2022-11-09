@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
-import Register from "./pages/Register";
+import React from "react";
+
 import AppRouter from "./router/AppRouter";
-import { userObserver } from "./auth/firebase";
+
+import AuthContextProvider from "./context/AuthContextProvider";
 
 const App = () => {
-  useEffect(() => {
-    userObserver();
-  }, []);
-
   return (
-    <AppRouter>
-      <Register />
-    </AppRouter>
+    <AuthContextProvider>
+      <AppRouter></AppRouter>
+    </AuthContextProvider>
   );
 };
 
