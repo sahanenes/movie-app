@@ -36,7 +36,7 @@ const Review = () => {
           </div>
         );
       })}
-      <div>
+      {/* <div>
         <form>
           <div className="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
             <div className="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
@@ -62,7 +62,7 @@ const Review = () => {
             </div>
           </div>
         </form>
-      </div>
+      </div> */}
     </>
   );
 };
