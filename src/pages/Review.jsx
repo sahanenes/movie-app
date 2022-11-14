@@ -12,7 +12,6 @@ const Review = () => {
     axios.get(review).then((res) => setDetails(res.data.results));
   }, [review]);
 
-  console.log(details);
   return (
     <>
       {details?.map((detail, index) => {
@@ -21,16 +20,11 @@ const Review = () => {
             <figure className="flex flex-col justify-center items-center p-8  bg-white rounded-t-lg border-b border-gray-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700">
               <blockquote className="mx-auto mb-4 max-w-2xl text-gray-500 lg:mb-8 dark:text-gray-400">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">
-                  {detail.author_details.username}
+                  {detail.author_details.username.substring(1)}
                 </h3>
                 <p className="my-4 font-light">{detail.content}</p>
               </blockquote>
               <figcaption className="flex justify-center items-center space-x-3">
-                <img
-                  className="w-9 h-9 rounded-full"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                  alt="profile picture"
-                />
                 <div className="space-y-0.5 font-medium dark:text-white text-left">
                   <div>{detail.author}</div>
                   <div className="text-sm font-light text-gray-500 dark:text-gray-400">
