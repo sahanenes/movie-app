@@ -13,6 +13,7 @@ const Main = () => {
   const { currentUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [counter, setCounter] = useState(1);
+  const [visible, setVisible] = useState(true);
 
   const getMovies = (API) => {
     setLoading(true);
@@ -24,13 +25,14 @@ const Main = () => {
   };
   useEffect(() => {
     getMovies(FEATURED_API + counter);
-  }, []);
+  }, [counter]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm && currentUser) {
       getMovies(SEARCH_API + searchTerm);
       setSearchTerm("");
+      setVisible(false);
     } else if (!currentUser) {
       alert("please login to see details");
     } else {
@@ -39,11 +41,9 @@ const Main = () => {
   };
   const handleIncrease = () => {
     setCounter(counter + 1);
-    getMovies(FEATURED_API + counter);
   };
   const handleDecrease = () => {
     counter > 0 && setCounter(counter - 1);
-    getMovies(FEATURED_API + counter);
   };
 
   return (
@@ -72,25 +72,27 @@ const Main = () => {
           movies.map((movie) => <MovieCard key={movie.id} {...movie} />)
         )}
       </div>
-      <div className="flex rounded-md shadow-sm justify-center ">
-        <button
-          type="button"
-          className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-          onClick={() => handleDecrease()}
-        >
-          Prev
-        </button>
-        <p className="m-3 font-light text-gray-500 dark:text-gray-400">
-          {counter}
-        </p>
-        <button
-          type="button"
-          className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-          onClick={() => handleIncrease()}
-        >
-          Next
-        </button>
-      </div>
+      {visible && (
+        <div className="flex rounded-md shadow-sm justify-center ">
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={() => handleDecrease()}
+          >
+            Prev
+          </button>
+          <p className="m-3 font-light text-gray-500 dark:text-gray-400">
+            {counter}
+          </p>
+          <button
+            type="button"
+            className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={() => handleIncrease()}
+          >
+            Next
+          </button>
+        </div>
+      )}
     </>
   );
 };
