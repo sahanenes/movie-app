@@ -43,7 +43,7 @@ const Main = () => {
     setCounter(counter + 1);
   };
   const handleDecrease = () => {
-    counter > 0 && setCounter(counter - 1);
+    counter > 1 && setCounter(counter - 1);
   };
 
   return (
