@@ -2,11 +2,11 @@
 
 # Project : Movie App 
 
-## Description
+# Description
 
 Project aims to create a Movie App.
 
-Used Tech and Libraries:
+# Used Tech and Libraries:
 
 - HTML
 
@@ -18,11 +18,11 @@ Used Tech and Libraries:
 
 - Firebase Authentication
 
--React Toastify
+- React Toastify
 
--Tailwind
+- Tailwind
 
-## Project Skeleton
+# Project Skeleton
 
 ```
  - Movie App
